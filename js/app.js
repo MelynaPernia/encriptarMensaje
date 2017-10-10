@@ -1,53 +1,53 @@
-//creando una funcion cipher
+//Creando una funcion cipher con un parametro
 var cipher= function(sentence){
-  // declarando una variablen sentencesWithoutSpace y almaceno cada letra de la frase ingresada
+  // Declarando una variable sentencesWithoutSpace y almacena cada letra de la frase ingresada
   var sentencesWithoutSpace= sentence.split('');
-  //creando una variable vacia para alamcenar cada letra encriptada
+  //Creando una variable vacía sentenceEncrypted
   var sentenceEncrypted='';
-  //declarando una variable lettersAlphabet que contiene el abecedario
+  //Declarando una variable de tipo string llamada lettersAlphabet que contiene el abecedario
   var lettersAlphabet ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-// creadno un for para hacer el recorrido de las letras para eliminar los espacios vacios
+// Creadno un bucle for que recorre el arreglo sentencesWithoutSpace
   for(var j=0;j<sentencesWithoutSpace.length;j++)
   {
-    //consicion para comparar si la letra es un espacio vacio
+    //Creando una condición para validar si los elementos del arreglo es vacío
       if(sentencesWithoutSpace[j]===" ")
       {
-        //eliminando el elemento que contiene espacio vacío
-
+          //Eliminando el elemento que contiene espacio vacío
           sentencesWithoutSpace.splice(j,1);
-          //se decremeneta para posicionarnos en la posicion actual, ya que se eliminó un elemento.
+          //Se decrementa en uno para posicionarnos en la posición actual, ya que se eliminó un elemento.
           j--;
       }
   }
 
-  //pasar una cadena sentencesWithoutSpace a un string de nombre sentence
+  //En la variable sentence se almacena como string el arreglo sentencesWithoutSpace
   sentence=sentencesWithoutSpace.join('');
-
-  //hacer un recorrido de la frase que ya no contiene espacios vacios
-
+  //Creando un bucle para hacer un recorrido de la frase que ya no contiene espacios vacios
   for(var i=0;i<sentence.length;i++)
   {
-    //se almacena en numberLetterAscii el numero del codigo ascii que le corresponde a la letra
+      //En la variable numberLetterAscii se almacena el número del código ascii que le corresponde a la letra
       numberLetterAscii=(sentence.charAt(i)).charCodeAt();
-      //Busca la posicion de la letra en la variable lettersAlphabet donde se encuentran todos las letras del abecedario
+      //Se almacena en la variable positionAlphabet la posición de la letra que se encuentra en la variable lettersAlphabet
       positionAlphabet=lettersAlphabet.indexOf(sentence.charAt(i));
-      //Halla la nueva posicion en la variable lettersAlphabet
+      //en la variable newPosition le asigna la nueva posicion de la letra.
       newPosition=(positionAlphabet+numberLetterAscii)%26;
-      //acumula la nueva letra encontrada.
+      //En una variable de tipo string llamada sentenceEncrypted acumula la nueva letra encontrada.
       sentenceEncrypted+=lettersAlphabet.charAt(newPosition);
 
   }
-  //Imprime la frase encriptada
+  //Escribe la frase encriptada;
   document.write(sentenceEncrypted);
 
 }
-//validacion de para el ingreso de la frase
+
+//Validacion de para el ingreso de la frase
+
 do
 {
-  //Ingresa la frase
+  //Creando la variable sentence para ingresar la frase
   var sentence= prompt('¿Cuál es tú frase?')
-  //si la frase ingresada es vacia o es un numero
+  //Mientras la longitud de la frase es igual a cero o No es un NaN
 }while(sentence.length===0 || !isNaN(sentence))
 
+// Llamando a la función cipher
 cipher(sentence);
